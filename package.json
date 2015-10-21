@@ -1,0 +1,40 @@
+{
+  "name": "react-nav-tabs",
+  "version": "0.0.1",
+  "description": "Generic, flexible tabbed based navigation with optional react-router support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "start": "./node_modules/.bin/webpack --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmfurlott/react-nav-tabs.git"
+  },
+  "keywords": [
+    "react",
+    "tabs",
+    "navigation",
+    "router",
+    "flexible",
+    "optional",
+    "generic",
+    "nav",
+    "tab"
+  ],
+  "author": "Joseph Furlott <jmfurlott@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmfurlott/react-nav-tabs/issues"
+  },
+  "homepage": "https://github.com/jmfurlott/react-nav-tabs#readme",
+  "dependencies": {
+    "react": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-loader": "^5.3.2",
+    "webpack": "^1.12.2"
+  }
+}
