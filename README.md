@@ -1,4 +1,4 @@
-react-nav-tabs
+# react-nav-tabs
 
 ## Description
 
@@ -8,7 +8,7 @@ The *main* goal of this project is to provide flexible class names, elements, an
 
 ## Example Usage
 
-```
+```js
 import {
   NavTabs,
   NavTabList,
@@ -38,7 +38,7 @@ import {
 </NavTabs>
 ```
 
-Please view the docs for more information on the API.
+Please view the [docs](/docs/README.md) for more information on the API.
 
 ## License
 
