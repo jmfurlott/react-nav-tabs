@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname,
   entry: "./index.js",
   output: {
-    path: __dirname + "/dist",
+    path: __dirname + "/demo",
     filename: "bundle.js",
   },
   module: {
@@ -16,11 +16,11 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-    }),
-  ],
+  // plugins: [
+  //   new webpack.optimize.UglifyJsPlugin({
+  //     compress: {
+  //       warnings: false,
+  //     },
+  //   }),
+  // ],
 }
