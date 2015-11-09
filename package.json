@@ -1,6 +1,6 @@
 {
   "name": "react-nav-tabs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generic, flexible tabbed based navigation with optional react-router support",
   "main": "dist/index.js",
   "scripts": {
