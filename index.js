@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export class NavTabs extends React.Component {
@@ -8,6 +9,7 @@ export class NavTabs extends React.Component {
   }
 
   static propTypes = {
+    active: React.PropTypes.string,
     baseRoute: React.PropTypes.string,
     children: React.PropTypes.node.isRequired,
     className: React.PropTypes.string.isRequired,
@@ -19,17 +21,16 @@ export class NavTabs extends React.Component {
   constructor(props) {
     super(props);
 
-    const tabs = this.props.children[0].props.children;
     this.state = {
-      activeTabKey: tabs.find(c => c.props.isActive).key || tabs[0].key,
-    };
+      activeTabKey: props.active,
+    }
   }
 
   handleTabClick(key) { this.setState({ activeTabKey: key }); }
 
   componentWillMount() {
     // Select a tab over default if soft query
-    if (this.context.location.query.nav) {
+    if (this.context.location.query && this.context.location.query.nav) {
       const tabs = this.props.children[0].props.children;
       if (tabs.find(c => c.key === this.context.location.query.nav)) {
         this.setState({
@@ -40,28 +41,32 @@ export class NavTabs extends React.Component {
   }
 
   render() {
-    const { location } = this.context;
-    const { baseRoute, routeHandler } = this.props;
+    if (React.Children.count(this.props.children) === 2) {
+      const { location } = this.context;
+      const { baseRoute, routeHandler } = this.props;
 
-    const tabList = React.cloneElement(this.props.children[0], {
-      activeTabKey: this.state.activeTabKey,
-      onTabClick: this.handleTabClick.bind(this),
-      baseRoute: baseRoute,
-      key: "tabList",
-    });
-
-    let tabPaneList = routeHandler;
-    if (!baseRoute || (location.pathname === baseRoute || location.query.nav )) {
-      tabPaneList = React.cloneElement(this.props.children[1], {
-        activePaneKey: this.state.activeTabKey,
-        key: "tabPaneList",
+      const tabList = React.cloneElement(this.props.children[0], {
+        activeTabKey: this.state.activeTabKey,
+        onTabClick: this.handleTabClick.bind(this),
+        baseRoute: baseRoute,
+        key: "tabList",
       });
+  
+      let tabPaneList = routeHandler;
+      if (!baseRoute || (location.pathname === baseRoute || location.query.nav )) {
+        tabPaneList = React.cloneElement(this.props.children[1], {
+          activePaneKey: this.state.activeTabKey,
+          key: "tabPaneList",
+        });
+      }
+  
+      let element = React.DOM[this.props.element]({ className: this.props.className });
+      element = React.cloneElement(element, this.props, [ tabList, tabPaneList ]);
+  
+      return element;
+    } else {
+      return null;
     }
-
-    let element = React.DOM[this.props.element]({ className: this.props.className });
-    element = React.cloneElement(element, this.props, [ tabList, tabPaneList ]);
-
-    return element;
   }
 }
 
