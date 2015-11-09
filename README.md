@@ -18,12 +18,12 @@ import {
 } from "react-nav-tabs";
 
 
-<NavTabs element="div" className="app">
+<NavTabs active="profile" element="div" className="app">
   <NavTabList element="nav" className="app__navigation">
     <NavTab element="div" className="app__navigation-home" key="home">
       <h1>Home</h1>
     </NavTab>
-    <NavTab isActive element="div" className="app__navigation-profile" key="profile">
+    <NavTab element="div" className="app__navigation-profile" key="profile">
       <h1>Profile</h1>
     </NavTab>
   </NavTabList>
